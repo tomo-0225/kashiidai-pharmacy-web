@@ -1,0 +1,896 @@
+/* =========================================================
+   香椎台調剤薬局 スタイルシート
+   ========================================================= */
+
+/* ---------- Base ---------- */
+:root{--accent:#5E8A52} /* メインカラーはここを変えるだけで全体に反映 */
+html{
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%; /* iPhone横向き時の文字拡大を防ぐ */
+}
+body{margin:0;background:#F7F4EE}
+/* :where() で詳細度を0にし、ボタン等のクラス指定の色を優先させる */
+:where(a){color:#3F6636}
+:where(a:hover){color:#2C4A26}
+
+.page{
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  color:#3A3934;
+  background:#F7F4EE;
+  line-height:1.9;
+  letter-spacing:0.04em;
+  position:relative;
+  overflow:hidden;
+  overflow-wrap:break-word;
+}
+
+/* ---------- Common parts ---------- */
+.eyebrow{
+  margin:0;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.2em;
+  color:#3F6636;
+}
+
+.section-title{
+  margin:0;
+  font-family:'Zen Old Mincho',serif;
+  font-size:30px;
+  font-weight:700;
+  letter-spacing:0.12em;
+}
+.section-title--sm{font-size:28px}
+.section-title--spaced{margin-top:4px}
+
+.text{
+  margin:0;
+  font-size:15px;
+  color:#4D4A43;
+}
+
+/* 矢印付きの枠線ボタン */
+.btn-outline{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  min-height:48px;
+  padding:0 28px;
+  border:1px solid #8C8578;
+  border-radius:999px;
+  color:#3A3934;
+  text-decoration:none;
+  font-size:14px;
+}
+.btn-outline__icon{
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--accent);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* 塗りボタン */
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  min-height:48px;
+  padding:0 28px;
+  border-radius:999px;
+  background:var(--accent);
+  color:#FFFFFF;
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+}
+
+/* 写真差し替え用のプレースホルダー */
+.photo-placeholder{
+  border-radius:4px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-size:13px;
+}
+
+/* ---------- Header ---------- */
+.site-header{
+  background:#FFFFFF;
+  border-bottom:1px solid #E6E0D4;
+}
+.site-header__inner{
+  max-width:1240px;
+  margin:0 auto;
+  padding:14px 24px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px 24px;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:#3A3934;
+}
+.logo__text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.3;
+}
+.logo__name{
+  font-family:'Zen Old Mincho',serif;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:0.08em;
+}
+.logo__sub{
+  font-size:11px;
+  color:#6B675E;
+  letter-spacing:0.12em;
+}
+.global-nav{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:4px 22px;
+  font-size:14px;
+}
+.global-nav a{
+  color:#3A3934;
+  text-decoration:none;
+}
+.global-nav .global-nav__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  min-height:44px;
+  padding:0 20px;
+  border-radius:999px;
+  background:var(--accent);
+  color:#FFFFFF;
+  font-weight:700;
+}
+
+/* ハンバーガーボタン（PCでは非表示） */
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:none;
+  background:none;
+  cursor:pointer;
+}
+.menu-toggle__bar{
+  display:block;
+  width:24px;
+  height:2px;
+  border-radius:2px;
+  background:#3A3934;
+  transition:transform .25s,opacity .25s;
+}
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---------- Hero ---------- */
+.hero{padding:24px 24px 0}
+.hero__inner{
+  max-width:1240px;
+  margin:0 auto;
+  position:relative;
+  border-radius:6px;
+  overflow:hidden;
+  height:560px;
+  background:#DCE9F0;
+}
+.hero__img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.hero__copy{
+  position:absolute;
+  top:56px;
+  left:56px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  font-family:'Zen Old Mincho',serif;
+  font-weight:700;
+  font-size:clamp(18px,4.6vw,34px);
+  line-height:1.5;
+  letter-spacing:0.14em;
+  color:#2F3A2C;
+}
+.hero__copy span{
+  background:rgba(255,255,255,0.88);
+  padding:4px 16px;
+  align-self:flex-start;
+}
+.hero__badge{
+  position:absolute;
+  right:40px;
+  bottom:36px;
+  width:128px;
+  height:128px;
+  border-radius:50%;
+  background:#FFFFFF;
+  border:2px solid var(--accent);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  line-height:1.4;
+}
+.hero__badge-lead{font-size:12px;color:#4D4A43}
+.hero__badge-title{
+  font-family:'Zen Old Mincho',serif;
+  font-size:22px;
+  font-weight:700;
+  color:#3F6636;
+}
+.hero__badge-count{font-size:13px;font-weight:700;color:#3A3934}
+
+/* ---------- Quick info bar ---------- */
+.quick-info{
+  max-width:1240px;
+  margin:0 auto;
+  padding:0 24px;
+}
+.quick-info__grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));
+  border-bottom:1px solid #E0D9CB;
+  font-size:14px;
+}
+.quick-info__item{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:60px;
+  color:#3A3934;
+  text-decoration:none;
+}
+
+/* ---------- About ---------- */
+.about{
+  max-width:1100px;
+  margin:0 auto;
+  padding:110px 24px 120px;
+}
+.about__grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));
+  gap:56px;
+  align-items:center;
+}
+.about__photos{
+  position:relative;
+  min-height:420px;
+}
+.about__photo-main{
+  position:absolute;
+  top:0;
+  left:40px;
+  right:0;
+  height:270px;
+  background:#DCE5D6;
+  color:#4A5A44;
+}
+.about__photo-sub{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:58%;
+  height:190px;
+  background:#E8DFD0;
+  border:6px solid #F7F4EE;
+  color:#5E5446;
+}
+.about__body{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+.about__title{
+  line-height:1.7;
+  letter-spacing:0.1em;
+}
+.about__body .btn-outline{align-self:flex-start}
+
+/* ---------- Services ---------- */
+.services{padding:0 24px 120px}
+.services__panel{
+  max-width:1100px;
+  margin:0 auto;
+  background:#ECE6DA;
+  border-radius:4px;
+  padding:72px clamp(24px,6vw,72px);
+}
+.services__head{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:24px;
+  margin-bottom:40px;
+}
+.services__heading{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.services__lead{
+  margin:0;
+  max-width:440px;
+  font-size:14px;
+  color:#4D4A43;
+}
+.service-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));
+  gap:16px;
+}
+.service-item{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-height:76px;
+  padding:0 20px;
+  background:#FFFFFF;
+  border-radius:4px;
+  font-size:15px;
+  font-weight:500;
+}
+.service-item__icon{
+  flex:none;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#EEF3EA;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.services__more{
+  display:flex;
+  justify-content:center;
+  margin-top:40px;
+}
+.services__more .btn-outline{
+  padding:0 32px;
+  background:#F7F4EE;
+}
+
+/* ---------- Points (当薬局のこだわり) ---------- */
+.points{
+  background:#EAF0E4;
+  padding:100px 24px 110px;
+}
+.points__inner{
+  max-width:1100px;
+  margin:0 auto;
+}
+.points__head{
+  text-align:center;
+  margin-bottom:52px;
+}
+.point-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));
+  gap:32px;
+}
+.point{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+.point__photo{
+  width:100%;
+  aspect-ratio:4 / 3;
+  color:#4A5246;
+}
+.point__photo--green{background:#DCE5D6}
+.point__photo--beige{background:#E8DFD0}
+.point__photo--gray{background:#DFE6E3}
+.point__num{
+  margin-top:-26px;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:var(--accent);
+  color:#FFFFFF;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Zen Old Mincho',serif;
+  font-size:18px;
+  font-weight:700;
+  border:4px solid #EAF0E4;
+}
+.point__title{
+  margin:14px 0 10px;
+  font-family:'Zen Old Mincho',serif;
+  font-size:21px;
+  font-weight:700;
+  letter-spacing:0.1em;
+}
+.point__text{
+  margin:0;
+  font-size:14px;
+  text-align:left;
+  color:#4D4A43;
+}
+
+/* ---------- Prescription ---------- */
+.prescription{
+  background:#ECE6DA;
+  padding:110px 24px;
+}
+.prescription__grid{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
+  gap:24px;
+}
+.prescription__head{
+  grid-column:1 / -1;
+  text-align:center;
+  margin-bottom:20px;
+}
+.prescription__head .section-title{margin:4px 0 10px}
+.send-card{
+  background:#FFFFFF;
+  border:1px solid #E0D9CB;
+  border-radius:4px;
+  padding:36px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.send-card__title{
+  margin:0;
+  font-size:18px;
+  font-weight:700;
+}
+.send-card__text{
+  margin:0;
+  font-size:14px;
+  color:#4D4A43;
+}
+.send-card .btn-primary{align-self:flex-start}
+.send-card__note{
+  margin:-8px 0 0;
+  font-size:13px;
+  color:#5E5A51;
+}
+.send-card__fax{
+  margin:0;
+  font-family:'Zen Old Mincho',serif;
+  font-size:26px;
+  font-weight:700;
+  color:#3F6636;
+}
+
+/* ---------- Hours + Access ---------- */
+.hours{
+  background:#FFFFFF;
+  padding:100px 24px;
+}
+.hours__grid{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));
+  gap:56px;
+}
+.info-block{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.table-wrap{overflow-x:auto}
+.hours-table{
+  width:100%;
+  min-width:440px;
+  border-collapse:collapse;
+  font-size:14px;
+  text-align:center;
+}
+.hours-table thead tr{background:#ECE6DA}
+.hours-table thead th{padding:12px 4px}
+.hours-table thead th:first-child{
+  padding:12px 8px;
+  font-weight:700;
+  text-align:left;
+}
+.hours-table tbody tr{border-bottom:1px solid #E6E0D4}
+.hours-table tbody th{
+  padding:14px 8px;
+  text-align:left;
+  font-weight:500;
+}
+.hours-table .is-open{color:#3F6636}
+.hours-table .is-closed{color:#8C8578}
+.hours__notes{
+  margin:0;
+  padding-left:1.2em;
+  font-size:13px;
+  color:#5E5A51;
+}
+.hours__notes li + li{margin-top:4px}
+.access-map{
+  height:260px;
+  border-radius:4px;
+  overflow:hidden;
+  background:#E3E8DF;
+}
+.access-map iframe{
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+}
+.access-list{
+  margin:0;
+  display:grid;
+  grid-template-columns:88px 1fr;
+  gap:8px 16px;
+  font-size:14px;
+}
+.access-list dt{font-weight:700}
+.access-list dd{margin:0}
+
+/* ---------- Pharmacy information ---------- */
+.info{padding:100px 24px}
+.info__inner{
+  max-width:900px;
+  margin:0 auto;
+}
+.info__head{
+  text-align:center;
+  margin-bottom:40px;
+}
+.info-table{
+  margin:0;
+  border-top:1px solid #E0D9CB;
+  font-size:14px;
+}
+.info-table__row{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:8px 24px;
+  padding:18px 4px;
+  border-bottom:1px solid #E0D9CB;
+}
+.info-table dt{
+  font-weight:700;
+  color:#3F6636;
+}
+.info-table dd{
+  margin:0;
+  color:#4D4A43;
+}
+
+/* ---------- News ---------- */
+.news{
+  background:#FFFFFF;
+  padding:100px 24px;
+}
+.news__inner{
+  max-width:900px;
+  margin:0 auto;
+}
+.news__head{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:16px;
+  margin-bottom:28px;
+}
+.news__more{font-size:14px}
+.news-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  border-top:1px solid #E0D9CB;
+}
+.news-list li{border-bottom:1px solid #E0D9CB}
+.news-list a{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 20px;
+  padding:20px 4px;
+  color:#3A3934;
+  text-decoration:none;
+  font-size:15px;
+}
+.news-list__date{
+  font-size:13px;
+  color:#5E5A51;
+}
+.news-list__tag{
+  font-size:12px;
+  padding:2px 12px;
+  border-radius:999px;
+  background:#EAF0E4;
+  color:#3F6636;
+}
+
+/* ---------- Recruit ---------- */
+.recruit{padding:0 24px 100px}
+.recruit__banner{
+  max-width:1100px;
+  margin:0 auto;
+  border-radius:4px;
+  background:var(--accent);
+  color:#FFFFFF;
+  padding:48px clamp(24px,6vw,64px);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.recruit__banner .eyebrow{color:inherit}
+.recruit__title{
+  margin:4px 0 6px;
+  font-size:26px;
+  letter-spacing:0.1em;
+}
+.recruit__text{
+  margin:0;
+  font-size:14px;
+}
+.recruit__banner .btn-primary{
+  padding:0 32px;
+  background:#FFFFFF;
+  color:#2F4A29;
+}
+
+/* ---------- Footer ---------- */
+.site-footer{
+  background:#3A3934;
+  color:#EDEAE3;
+  padding:56px 24px 32px;
+}
+.site-footer__inner{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:32px;
+}
+.site-footer__info{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  font-size:13px;
+}
+.site-footer__name{
+  font-family:'Zen Old Mincho',serif;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  color:#FFFFFF;
+}
+.footer-nav{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:6px 40px;
+  font-size:13px;
+}
+.footer-nav a{color:#EDEAE3}
+.site-footer__copy{
+  max-width:1100px;
+  margin:40px auto 0;
+  font-size:12px;
+  color:#BDB8AD;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+/* ---------- タブレット以下（〜960px）：ハンバーガーメニュー ---------- */
+@media (max-width:960px){
+  .menu-toggle{display:flex}
+  .global-nav{
+    display:none;
+    width:100%;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    font-size:15px;
+    border-top:1px solid #E6E0D4;
+  }
+  .global-nav.is-open{display:flex}
+  .global-nav a{
+    padding:14px 4px;
+    border-bottom:1px solid #E6E0D4;
+  }
+  .global-nav .global-nav__cta{
+    justify-content:center;
+    margin:16px 0 4px;
+    border-bottom:none;
+  }
+}
+
+/* ---------- スマートフォン（〜600px）：iPhone / Android ---------- */
+@media (max-width:600px){
+  /* 共通 */
+  .section-title{
+    font-size:24px;
+    letter-spacing:0.08em;
+  }
+  .section-title--sm{font-size:23px}
+  .text{font-size:14px}
+
+  /* Header */
+  .site-header__inner{padding:10px 16px}
+  .logo{gap:10px}
+  .logo svg{width:34px;height:34px}
+  .logo__name{font-size:19px}
+  .logo__sub{font-size:10px}
+
+  /* Hero */
+  .hero{padding:12px 16px 0}
+  .hero__inner{height:420px}
+  .hero__copy{
+    top:24px;
+    left:16px;
+    gap:8px;
+    font-size:clamp(18px,5.2vw,24px);
+    letter-spacing:0.08em;
+  }
+  .hero__copy span{padding:2px 10px}
+  .hero__badge{
+    right:16px;
+    bottom:16px;
+    width:96px;
+    height:96px;
+  }
+  .hero__badge-lead{font-size:10px}
+  .hero__badge-title{font-size:17px}
+  .hero__badge-count{font-size:11px}
+
+  /* Quick info：3列のまま、アイコンを上に */
+  .quick-info{padding:0 16px}
+  .quick-info__grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    font-size:12px;
+    letter-spacing:0;
+  }
+  .quick-info__item{
+    flex-direction:column;
+    gap:4px;
+    min-height:72px;
+    padding:8px 2px;
+    text-align:center;
+    line-height:1.4;
+  }
+
+  /* About */
+  .about{padding:64px 16px 72px}
+  .about__grid{gap:32px}
+  .about__photos{min-height:300px}
+  .about__photo-main{left:24px;height:200px}
+  .about__photo-sub{width:64%;height:140px}
+  .about__body{gap:18px}
+  .about__title{font-size:clamp(19px,5.4vw,24px)}
+
+  /* Services：2列・アイコンを上に */
+  .services{padding:0 16px 72px}
+  .services__panel{padding:48px 16px}
+  .services__head{gap:16px;margin-bottom:28px}
+  .service-list{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+  .service-item{
+    flex-direction:column;
+    justify-content:center;
+    gap:8px;
+    min-height:112px;
+    padding:14px 8px;
+    font-size:14px;
+    text-align:center;
+    line-height:1.5;
+  }
+  .services__more{margin-top:28px}
+
+  /* Points */
+  .points{padding:64px 16px 72px}
+  .points__head{margin-bottom:36px}
+  .point-list{gap:40px}
+  .point__title{font-size:19px}
+
+  /* News */
+  .news{padding:64px 16px}
+  .news-list a{
+    gap:4px 12px;
+    padding:16px 4px;
+    font-size:14px;
+  }
+
+  /* Prescription */
+  .prescription{padding:64px 16px}
+  .prescription__grid{gap:16px}
+  .prescription__head{margin-bottom:8px}
+  .send-card{padding:24px 20px}
+  .send-card .btn-primary{
+    align-self:stretch;
+    justify-content:center;
+  }
+  .send-card__fax{font-size:22px}
+
+  /* Hours + Access */
+  .hours{padding:64px 16px}
+  .hours__grid{gap:56px}
+  .hours-table{
+    min-width:0;
+    font-size:13px;
+  }
+  .hours-table thead th{padding:10px 2px}
+  .hours-table thead th:first-child{padding:10px 6px}
+  .hours-table tbody th{padding:12px 6px}
+  .access-map{height:240px}
+
+  /* Pharmacy information */
+  .info{padding:64px 16px}
+  .info__head{margin-bottom:28px}
+  .info-table__row{
+    grid-template-columns:1fr;
+    gap:2px;
+    padding:14px 4px;
+  }
+  .access-list{grid-template-columns:64px 1fr}
+
+  /* Recruit */
+  .recruit{padding:0 16px 64px}
+  .recruit__banner{padding:36px 20px}
+  .recruit__title{
+    font-size:18px;
+    letter-spacing:0.04em;
+  }
+  .recruit__banner .btn-primary{
+    width:100%;
+    justify-content:center;
+  }
+
+  /* Footer */
+  .site-footer{padding:48px 16px 28px}
+  .footer-nav{gap:6px 24px}
+  .site-footer__copy{margin-top:32px}
+}
+
+/* ---------- 小さめのスマートフォン（〜360px）：iPhone SE・小型Android ---------- */
+@media (max-width:360px){
+  .service-item{
+    font-size:13px;
+    letter-spacing:0;
+  }
+  .send-card__fax{font-size:19px}
+}
