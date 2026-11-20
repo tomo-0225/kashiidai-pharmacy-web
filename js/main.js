@@ -6,7 +6,58 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     initMenu();
+    initHeroSlider();
   });
+
+  /* ---------- トップのスライド ---------- */
+  function initHeroSlider() {
+    var root = document.querySelector('[data-hero-slider]');
+    if (!root) return;
+    var track = root.querySelector('.hero__track');
+    var slides = root.querySelectorAll('.hero__slide');
+    var dots = root.querySelectorAll('.hero__dot');
+    var INTERVAL = 6000; // 切り替えの間隔（ミリ秒）
+    var current = 0;
+    var timer = null;
+
+    function show(index) {
+      current = (index + slides.length) % slides.length;
+      track.style.transform = 'translateX(' + (-100 * current) + '%)';
+      for (var i = 0; i < slides.length; i++) {
+        // 見えていないスライドのリンクにはフォーカスが行かないようにする
+        slides[i].toggleAttribute('inert', i !== current);
+        slides[i].setAttribute('aria-hidden', String(i !== current));
+        if (dots[i]) dots[i].setAttribute('aria-current', String(i === current));
+      }
+    }
+
+    function start() {
+      // 動きを減らす設定の方には自動で切り替えない
+      if (timer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      timer = setInterval(function () { show(current + 1); }, INTERVAL);
+    }
+    function stop() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    Array.prototype.forEach.call(dots, function (dot, i) {
+      dot.addEventListener('click', function () {
+        stop();
+        show(i);
+        start();
+      });
+    });
+
+    // マウスを乗せている間・フォーカス中は止める
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+
+    show(0);
+    start();
+  }
 
   /* ---------- スマホ用ハンバーガーメニュー ---------- */
   function initMenu() {

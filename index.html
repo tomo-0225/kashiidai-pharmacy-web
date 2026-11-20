@@ -54,17 +54,33 @@
 
   <!-- Hero -->
   <section id="top" class="hero">
-    <div class="hero__inner">
-      <img src="images/hero.svg" alt="香椎台調剤薬局の外観" class="hero__img">
-      <div class="hero__copy">
-        <span>地域の暮らしに寄り添う</span>
-        <span>いつでも相談できる</span>
-        <span>かかりつけ薬局でありたい</span>
+    <div class="hero__inner" data-hero-slider>
+      <div class="hero__track">
+        <div class="hero__slide">
+          <img src="images/pharmacy1.jpg" alt="香椎台調剤薬局の外観" class="hero__img">
+          <div class="hero__copy">
+            <span>地域の暮らしに寄り添う</span>
+            <span>いつでも相談できる</span>
+            <span>かかりつけ薬局でありたい</span>
+          </div>
+          <div class="hero__badge">
+            <span class="hero__badge-lead">お車でも安心</span>
+            <span class="hero__badge-title">駐車場</span>
+            <span class="hero__badge-count">無料 3台</span>
+          </div>
+        </div>
+        <a href="column/line-shohousen.html" class="hero__slide hero__slide--link">
+          <img src="images/pharmacy4.jpg" alt="薬剤師が患者さんにお薬を説明している様子" class="hero__img" loading="lazy">
+          <div class="hero__copy hero__copy--line">
+            <span>処方せんはLINEで</span>
+            <span>事前に送れます</span>
+          </div>
+          <span class="btn-primary hero__more">送り方を見る</span>
+        </a>
       </div>
-      <div class="hero__badge">
-        <span class="hero__badge-lead">お車でも安心</span>
-        <span class="hero__badge-title">駐車場</span>
-        <span class="hero__badge-count">無料 3台</span>
+      <div class="hero__dots">
+        <button type="button" class="hero__dot" aria-label="1枚目を表示" aria-current="true"></button>
+        <button type="button" class="hero__dot" aria-label="2枚目を表示"></button>
       </div>
     </div>
   </section>
@@ -99,7 +115,7 @@
         <h3 class="send-card__title">LINEで送る</h3>
         <p class="send-card__text">処方せんを撮影して送るだけ。お薬の準備ができたらLINEでお知らせします。</p>
         <img src="images/line.jpg" alt="香椎台調剤薬局 公式LINEの友だち追加用QRコード" class="send-card__qr" width="369" height="271">
-        <a href="#prescription" class="btn-primary">友だち追加して送る</a>
+        <a href="https://lin.ee/puOA3vL" class="btn-primary" target="_blank" rel="noopener">友だち追加して送る</a>
       </div>
       <div class="send-card">
         <h3 class="send-card__title">FAXで送る</h3>
